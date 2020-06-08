@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Code</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+
+<style>
+#output 
+{
+/* display:none; */
+    position: absolute;
+    border: 1px solid red;
+    background-color: white;
+    color: black;
+    top:120px;
+    left: 10px;
+    padding:5px;
+}
+#container
+{
+  padding: 50px;
+    text-align: center;
+}
+    .tooltipa{
+        color:blue;
+    }
+
+.btnfirst{
+margin-bottom: 25px;
+margin-top: 25px;
+
+}
+    span{
+        color:blue;
+        background: yellow;
+    }
+
+</style>
+
+</head>
+<body>
+<div id="container">
+<p>This is my content, and if you hover here a <span class="tooltipa" data-toolcontent="first tooltip">tooltip</span> will appear.
+</p>
+<p>This is my content, and if you hover here a <span class="tooltipa" data-toolcontent="second tooltip">tooltip 2</span> will appear.
+</p>
+<div id="output">No content yet</div>  
+</div>
+<div class="btn btn-primary btnfirst" data-myMessage="you clicked 1" onClick="htmloutput('Hello World');">Click me</div> 
+<div class="btn btn-warning btnfirst" data-myMessage="you clicked 2" onClick="htmloutput('Hello World');">Click me 2</div>       
+<div class="btn btn-danger btnfirst" data-myMessage="you clicked 3" onClick="htmloutput('Hello World');">Click me 2</div>            
+   
+   
+   
+   
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+<script>
+var output = document.getElementById('output');
+var btnfirst = document.getElementsByClassName('btnfirst');
+    
+for(var i=0; i<btnfirst.length; i++){
+    console.log(i);
+    btnfirst[i].addEventListener("click", myFunction, false);
+}
+    
+console.log(btnfirst);
+    
+    function myFunction(){
+      //  console.log(this.getAttribute('data-myMessage'));
+           htmloutput(this.getAttribute('data-myMessage'));                      
+ 
+    }
+    
+/*    
+    
+btnfirst.addEventListener("click", function(){
+    htmloutput('clicked');                      
+                          
+});
+*/
+    
+function htmloutput(myoutput){
+    output.innerHTML = myoutput;
+}
+</script>
+<script>
+var tooltiptool = document.getElementsByClassName('tooltipa');
+var myInterval;    
+    
+var output = document.getElementById('output');
+    
+    for(var i=0; i< tooltiptool.length; i++){
+        tooltiptool[i].onmouseover = function(e){
+            console.log(this);
+    clearInterval(myInterval);
+            var x = e.clientX, y = e.clientY;
+            output.style.top = (y+5) + 'px';
+            output.style.left = (x+5) + 'px';
+            output.style.display='block';
+            output.innerHTML = this.getAttribute('data-toolcontent');
+        myInterval = setInterval(function(){output.style.display='none';},1000);   
+
+        };
+        
+   /*     
+        tooltiptool[i].onmouseout = function(e){
+             output.style.display='none';
+            console.log('out')};
+    }
+*/
+
+</script>
+</body>
+</html>

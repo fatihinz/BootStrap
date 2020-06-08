@@ -1,0 +1,27 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>invisible-content.md</title>
+      </head>
+      <body>
+        <hr>
+<p>layout: docs
+title: Invisible content</p>
+<h2 id="group-utilities">group: utilities</h2>
+<p>The <code>.invisible</code> class can be used to toggle only the visibility of an element, meaning its <code>display</code> is not modified and the element can still affect the flow of the document.</p>
+<p>{% highlight html %}</p>
+<p><div class="invisible">...</div>
+{% endhighlight %}</p>
+<p>{% highlight scss %}
+// Class
+.invisible {
+  visibility: hidden;
+}</p>
+<p>// Usage as a mixin
+.element {
+  @include invisible;
+}
+{% endhighlight %}</p>
+
+      </body>
+    </html>
